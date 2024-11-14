@@ -1,4 +1,5 @@
-from src.config import db
+from src.adapters.drivens.infra.database.config import Config
+db = Config().db
 
 class Payment(db.Model):
     __tablename__ = 'payments'

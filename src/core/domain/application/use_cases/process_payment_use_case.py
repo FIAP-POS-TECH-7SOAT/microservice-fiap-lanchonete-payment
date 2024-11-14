@@ -1,4 +1,4 @@
-from src.core.domain.application.ports.services.Ipayment_service import IPaymentService
+from src.core.domain.application.services.Ipayment_service import IPaymentService
 from src.core.domain.application.ports.providers.dtos.process_payment_request_dto import ProcessPaymentRequest
 from src.core.domain.application.ports.providers.dtos.process_payment_response_dto import ProcessPaymentResponse
 from src.core.domain.validators.process_payment_request_validator import ProcessPaymentRequestValidator

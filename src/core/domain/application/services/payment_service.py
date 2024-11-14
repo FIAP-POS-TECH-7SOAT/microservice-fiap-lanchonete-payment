@@ -1,5 +1,5 @@
-from core.domain.application.ports.providers.dtos.success_payment_response_dto import SuccessPaymentResponse
-from src.core.domain.application.ports.services.Ipayment_service import IPaymentService
+from src.core.domain.application.ports.providers.dtos.success_payment_response_dto import SuccessPaymentResponse
+from src.core.domain.application.services.Ipayment_service import IPaymentService
 from src.core.domain.application.ports.repositories.Ipayment_repository import IPaymentRepository
 from src.core.domain.application.ports.providers.dtos.process_payment_request_dto import ProcessPaymentRequest
 from src.core.domain.application.ports.providers.dtos.process_payment_response_dto import ProcessPaymentResponse

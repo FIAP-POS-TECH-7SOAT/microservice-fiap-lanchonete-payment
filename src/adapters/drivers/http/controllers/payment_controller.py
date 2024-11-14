@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, jsonify, redirect
+from flask import Blueprint, request, jsonify
 from marshmallow import ValidationError
 
 from src.core.domain.application.ports.providers.dtos.process_payment_request_dto import ProcessPaymentRequest
@@ -23,9 +23,9 @@ def payment_bp(payment_service:PaymentService):
             result = process_payment_use_case.execute(payload)
 
             if result.status == 'pending':
-                return render_template("qr_code.html", external_link=result.qr_code, base64_image=result.qr_code_base64)
+                return jsonify({"success":str(result.qr_code_base64)})
             else:
-                return render_template("error.html", message="Payment failed")
+                return jsonify({"error":str(ex)}), 400
         
         except ValidationError as ex:
             return jsonify({"error":str(ex)}), 400
@@ -41,9 +41,9 @@ def payment_bp(payment_service:PaymentService):
         )
 
         try:
-            success_payment_use_case.execute(payload)
+            response = success_payment_use_case.execute(payload)
 
-            return redirect("http://www.site.com", code=302)
+            return jsonify({"success":str(response.id)})
         
         except ValidationError as ex:
             return jsonify({"error":str(ex)}), 400
